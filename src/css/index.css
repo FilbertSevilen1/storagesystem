@@ -1,0 +1,11 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background: url('../../public/background/background1.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    overflow-x: hidden;
+}

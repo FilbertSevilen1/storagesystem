@@ -1,0 +1,125 @@
+.itemContainer{
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+.itemContainerContent{
+    width: 1000px;
+    height: 850px;
+    padding:30px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+}
+.itemRow{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    border-bottom: 2px solid black;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.itemSearchBar{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    
+}
+.itemSearchLabel{
+    margin-right: 10px;
+    font-size: 20px;
+}
+.itemSearchBox{
+    font-size: 20px;
+}
+.itemSearchButton{
+    font-size: 20px;
+    border: none;
+    width: 70px;
+    height: 100%;
+    margin-left: 5px;
+    cursor: pointer;
+    background-color: green;
+    color: white;
+    transition: 150ms all ease;
+}
+.itemSearchButton:hover{
+    transform: scale(1.10);
+}
+.itemSearchButton:active{
+    transform: scale(1.05);
+}
+.itemRowHeader{
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+.itemLabelId{
+    width: 100px;
+    padding:10px;
+    display: flex;
+    align-items: center;
+}
+.itemLabel{
+    width: 150px;
+    padding:10px;
+    display: flex;
+    align-items: center;
+}
+.itemButton{
+    font-size: 20px;
+    margin-right: 2px;
+    border: none;
+    background-color: green;
+    color:white;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 150ms all ease;
+}
+.itemButton:hover{
+    transform: scale(1.06);
+}
+.itemButton:active{
+    box-shadow: 1px 1px 1px 1px inset gray;
+    transform: scale(1.01);
+}
+.itemButtonGreen{
+    background-color: green;
+}
+.itemButtonBlue{
+    background-color: rgb(0, 140, 255);
+}
+.itemContainerControl{
+    width: 150px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    align-self: flex-end;
+}
+.itemContainerButton{
+    width: 35px;
+    height: 30px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    background-color: green;
+}
+.itemContainerButton:hover{
+    background-color: rgb(0, 99, 0);
+}
+.itemContainerButton:active{
+    background-color: rgb(0, 82, 0);
+}
