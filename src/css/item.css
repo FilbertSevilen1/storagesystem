@@ -6,8 +6,7 @@
 }
 .itemContainerContent{
     width: 1000px;
-    height: 850px;
-    padding:30px;
+    padding:40px;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -32,7 +31,16 @@
     align-items: center;
     
 }
+.itemSearchBarInput{
+    width: 80%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    
+}
 .itemSearchLabel{
+    width: 150px;
     margin-right: 10px;
     font-size: 20px;
 }
@@ -116,10 +124,28 @@
     color: white;
     border-radius: 5px;
     background-color: green;
+    transition: 150ms all ease;
 }
 .itemContainerButton:hover{
     background-color: rgb(0, 99, 0);
 }
 .itemContainerButton:active{
+    background-color: rgb(0, 82, 0);
+}
+.itemSubmitButton{
+    width: 170px;
+    height: 40px;
+    background-color: green;
+    color:white;
+    border: none;
+    border-radius: 5px;
+    transition: 150ms all ease;
+    cursor: pointer;
+    margin-top: 30px;
+}
+.itemSubmitButton:hover{
+    background-color: rgb(0, 99, 0);
+}
+.itemSubmitButton:active{
     background-color: rgb(0, 82, 0);
 }

@@ -21,9 +21,9 @@ function Navigation(){
                 </button>
 
                 {/* Admin */}
-                {/* <button className="navigationButton" onClick={(()=>navigate('Edit'))}>
-                    Edit Item
-                </button> */}
+                <button className="navigationButton" onClick={(()=>navigate('insert'))}>
+                    Add Item
+                </button>
             </div>
             <div className="navigationContainerGroup">
                 <button className="navigationButton" onClick={(()=>navigate('Login'))}>

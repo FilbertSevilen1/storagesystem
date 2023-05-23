@@ -3,12 +3,12 @@ import React, { useEffect } from 'react';
 import  Axios  from "axios";
 import { useDispatch } from "react-redux";
 import Navigation from "./page/components/Navigation.jsx";
-import Landing from "./page/Landing.jsx";
 import ItemList from "./page/ItemList.jsx";
 import Borrow from "./page/Borrow.jsx";
 import Edit from "./page/Edit.jsx";
 import History from "./page/History.jsx";
 import Return from "./page/Return.jsx";
+import Insert from "./page/Insert.jsx";
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -37,6 +37,7 @@ function App() {
         <Route path="/return" element={<Return/>}></Route>
         <Route path="/edit/:id" element={<Edit/>}></Route>
         <Route path="/history" element={<History/>}></Route>
+        <Route path="/insert" element={<Insert/>}></Route>
       </Routes>
     </BrowserRouter>
   );
