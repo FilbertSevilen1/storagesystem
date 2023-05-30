@@ -29,9 +29,15 @@ function Navigation(){
                 </button>
 
                 {/* Admin */}
-                <button className="navigationButton" onClick={(()=>navigate('insert'))}>
-                    Add Item
-                </button>
+                {
+                    user.user_role == 'Admin'?
+                    <button className="navigationButton" onClick={(()=>navigate('insert'))}>
+                        Add Item
+                    </button>
+                    :
+                    <div>
+                    </div>
+                }
             </div>
                 {
                     user.user_role != ''?
