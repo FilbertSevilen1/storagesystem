@@ -9,24 +9,30 @@ import Edit from "./page/Edit.jsx";
 import History from "./page/History.jsx";
 import Return from "./page/Return.jsx";
 import Insert from "./page/Insert.jsx";
+import Login from "./page/Login.jsx";
+import Register from "./page/Register.jsx";
 
 const API_URL = process.env.REACT_APP_API_URL
 
 function App() {
   const dispatch = useDispatch();
-  // useEffect(()=>{
-  //   const id = localStorage.getItem("df_token")
-  //   let data = {
-  //     id : id
-  //   }
-  //   Axios.post(API_URL + `/auth/keeplogin`,data)
-  //   .then((respond)=>{
-  //     dispatch({type:'USER_LOGIN', payload:respond.data[0]})
-  //   })
-  //   .catch((error)=>{
-  //     console.log(error.response.data)
-  //   })
-  // },[])
+  useEffect(()=>{
+    const id = localStorage.getItem("storage_system_token")
+    console.log(id)
+    if(id){
+      let data = {
+        user_id : id
+      }
+      Axios.post(API_URL + `/users/keeplogin`,data)
+      .then((respond)=>{
+        dispatch({type:'USER_LOGIN', payload:respond.data[0]})
+      })
+      .catch((error)=>{
+        console.log(error.response.data)
+      })
+    }
+    
+  },[])
   return (
     <BrowserRouter>
       <Navigation></Navigation>
@@ -38,6 +44,9 @@ function App() {
         <Route path="/edit/:id" element={<Edit/>}></Route>
         <Route path="/history" element={<History/>}></Route>
         <Route path="/insert" element={<Insert/>}></Route>
+
+        <Route path="/login" element={<Login/>}></Route>
+        <Route path="/register" element={<Register/>}></Route>
       </Routes>
     </BrowserRouter>
   );

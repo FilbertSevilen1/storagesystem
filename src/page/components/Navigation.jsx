@@ -1,8 +1,16 @@
 import React from "react";
 import '../../css/navigation.css'
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 function Navigation(){
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const user = useSelector((state)=>state.user)
+    console.log(user)
+
+    const logout = () =>{
+        dispatch({type:"LOGOUT"})
+    }
     return (
         <div className="navigationContainer">
             <div className="navigationContainerGroup">
@@ -25,14 +33,26 @@ function Navigation(){
                     Add Item
                 </button>
             </div>
-            <div className="navigationContainerGroup">
-                <button className="navigationButton" onClick={(()=>navigate('Login'))}>
-                    Login
-                </button>
-                <button className="navigationButton" onClick={(()=>navigate('Register'))}>
-                    Register
-                </button>
-            </div>
+                {
+                    user.user_role != ''?
+                    <div className="navigationContainerGroup">
+                        <div className="navigationProfile">
+                            Hello, {user.user_name}
+                        </div>
+                        <button className="navigationButton" onClick={logout}>
+                            Logout
+                        </button>
+                    </div>
+                    :
+                    <div className="navigationContainerGroup">
+                        <button className="navigationButton" onClick={(()=>navigate('login'))}>
+                            Login
+                        </button>
+                        <button className="navigationButton" onClick={(()=>navigate('register'))}>
+                            Register
+                        </button>
+                    </div>
+                }
         </div>
     )
 }

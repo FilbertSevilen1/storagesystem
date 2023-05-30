@@ -32,7 +32,7 @@
     
 }
 .itemSearchBarInput{
-    width: 80%;
+    width: 500px;
     margin-top: 10px;
     margin-bottom: 20px;
     display: flex;
@@ -142,10 +142,17 @@
     transition: 150ms all ease;
     cursor: pointer;
     margin-top: 30px;
+    font-size: 20px;
 }
 .itemSubmitButton:hover{
     background-color: rgb(0, 99, 0);
 }
 .itemSubmitButton:active{
     background-color: rgb(0, 82, 0);
+}
+.itemRadioGroup{
+    width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

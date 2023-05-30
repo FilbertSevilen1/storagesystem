@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 
 const initialState = {
   user:{
-    id: "",
+    user_id: "",
     user_name:"",
     user_role:"",
   },
@@ -19,18 +19,13 @@ function reducers(state = initialState, action) {
       return {
         ...state,
         user:{
-          id: action.payload.id,
-          rank_id: action.payload.rank_id,
-          user_nickname: action.payload.user_nickname,
-          user_rank_image: action.payload.rank_picture,
-          user_rank_id: action.payload.rank_id,
-          user_rank_name: action.payload.rank_name,
-          user_profile_picture: action.payload.user_profile_picture,
-
+          user_id: action.payload.user_id,
+          user_name: action.payload.user_name,
+          user_role: action.payload.user_role
         },
       }
     case 'LOGOUT':
-      localStorage.removeItem('df_token')
+      localStorage.removeItem('storage_system_token')
       return initialState
     default:
       return state

@@ -1,4 +1,7 @@
 import React, { useEffect, useId, useRef, useState } from "react";
+import {toast, ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
 import '../css/item.css'
 import Axios from "axios";
 const API_URL = process.env.REACT_APP_API_URL
@@ -66,16 +69,45 @@ function Insert(){
         Axios.post(API_URL + "/items/insert", data)
         .then((respond)=>{
             console.log(respond)
-            alert(respond.data)
+            toast.success(`${respond.data}`, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+                });
         })
         .catch((error)=>{
-            console.log(error.message)
-            alert(error.message)
+            toast.error(`${error.message}`, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+                });
         })
     }
 
     return(
         <div className='itemContainer'>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                />
             <div className='itemContainerContent'>
                 <h1>Add Item</h1>
                 <div className='itemSearchBarInput'>
