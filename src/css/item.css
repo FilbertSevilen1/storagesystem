@@ -29,7 +29,14 @@
     margin-bottom: 20px;
     display: flex;
     align-items: center;
-    
+}
+.itemSearchBarCol{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 .itemSearchBarInput{
     width: 500px;
@@ -42,6 +49,11 @@
 .itemSearchLabel{
     width: 150px;
     margin-right: 10px;
+    font-size: 20px;
+}
+.itemSearchLabelLarge{
+    margin-right: 10px;
+    padding-bottom: 10px;
     font-size: 20px;
 }
 .itemSearchBox{
@@ -108,12 +120,23 @@
 .itemButtonBlue{
     background-color: rgb(0, 140, 255);
 }
+.itemButtonRed{
+    background-color: red;
+}
 .itemContainerControl{
     width: 150px;
     margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    align-self: flex-end;
+}
+.itemContainerControlAction{
+    width: 520px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     align-self: flex-end;
 }
 .itemContainerButton{
@@ -149,6 +172,42 @@
 }
 .itemSubmitButton:active{
     background-color: rgb(0, 82, 0);
+}
+.itemSubmitButtonUpdate{
+    width: 170px;
+    height: 40px;
+    background-color: rgb(0, 119, 255);
+    color:white;
+    border: none;
+    border-radius: 5px;
+    transition: 150ms all ease;
+    cursor: pointer;
+    margin-top: 30px;
+    font-size: 20px;
+}
+.itemSubmitButtonUpdate:hover{
+    background-color: rgb(0, 144, 228);
+}
+.itemSubmitButtonUpdate:active{
+    background-color: rgb(0, 106, 177);
+}
+.itemSubmitButtonReset{
+    width: 170px;
+    height: 40px;
+    background-color: rgb(77, 77, 77);
+    color:white;
+    border: none;
+    border-radius: 5px;
+    transition: 150ms all ease;
+    cursor: pointer;
+    margin-top: 30px;
+    font-size: 20px;
+}
+.itemSubmitButtonReset:hover{
+    background-color: rgb(105, 105, 105);
+}
+.itemSubmitButtonReset:active{
+    background-color: rgb(68, 68, 68);
 }
 .itemRadioGroup{
     width: 140px;
