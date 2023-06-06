@@ -18,7 +18,7 @@ function Login(){
     const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(()=>{
-        if(user.role!=""){
+        if(user.role){
             navigate("/")
         }
     },[user])
