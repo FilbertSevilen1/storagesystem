@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {toast, ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -6,15 +6,23 @@ import '../css/item.css'
 import '../css/index.css'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 const API_URL = process.env.REACT_APP_API_URL
 function Register(){
     const navigate = useNavigate();
 
+    const user = useSelector((state)=>state.user)
     const username = useRef("");
     const password = useRef("");
     const [gender, setGender] = useState("");
     const birthday = useRef("");
     const [errorMessage, setErrorMessage] = useState("");
+
+    useEffect(()=>{
+        if(user.user_id != ''){
+            navigate('/')
+        }
+    },[user])
 
     const onSubmit = () =>{
         if(!username.current.value){
@@ -74,16 +82,8 @@ function Register(){
         console.log(data)
         axios.post(API_URL + '/users/register', data)
         .then((repsond)=>{
-            toast.success(`${repsond.data}`, {
-                position: "top-center",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                progress: undefined,
-                theme: "light",
-                });
+            alert('Register Success')
+            navigate('/');
         })
         .catch((error)=>{
             console.log(error)
