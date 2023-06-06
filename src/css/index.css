@@ -9,3 +9,10 @@ body{
     background-size: cover;
     overflow-x: hidden;
 }
+.errorMessage{
+    font-size: 20px;
+    color:red
+}
+.pointer{
+    cursor: pointer;
+}

@@ -32,3 +32,16 @@
     transform: scale(0.98);
     box-shadow: 1px 1px 2px 1px inset gray;
 }
+.navigationProfile{
+    height: 60px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 150ms all ease;
+    font-weight: 600;
+}
