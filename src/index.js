@@ -12,6 +12,7 @@ const initialState = {
     user_name:"",
     user_role:"",
   },
+  borrowing:0
 }
 function reducers(state = initialState, action) {
   switch (action.type) {
@@ -23,6 +24,16 @@ function reducers(state = initialState, action) {
           user_name: action.payload.user_name,
           user_role: action.payload.user_role
         },
+      }
+    case 'BORROWING':
+      return{
+        ...state,
+        borrowing:true,
+      }
+      case 'RETURN':
+      return{
+        ...state,
+        borrowing:false,
       }
     case 'LOGOUT':
       localStorage.removeItem('storage_system_token')

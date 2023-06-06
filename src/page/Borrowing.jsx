@@ -3,36 +3,37 @@ import ItemListRow from './ItemListRow'
 import {toast, ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const API_URL = process.env.REACT_APP_API_URL
-function Borrow(){
+function Borrowing(){
     const [borrowID, setBorrowID] = useState('');
     const [borrowReason, setBorrowReason] = useState('');
     const [borrowStatus, setBorrowStatus] = useState('');
     const [borrowLocation, setBorrowLocation] = useState('');
     const user = useSelector((state)=>state.user)
-    const borrowing = useSelector((state)=>state.borrowing)
     const [items, setItems] = useState('');
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     useEffect(()=>{
-        if(borrowing)navigate('/borrowing')
-        getDraft();
+        getOngoing();
         
-    },[user, borrowing])
-    const getDraft = () =>{
+    },[user])
+    const getOngoing = () =>{
         let data = {
             user_id : user.user_id
         }
-        console.log(data)
-        axios.post(API_URL + '/items/draft',data)
+        axios.post(API_URL + '/items/ongoing',data)
         .then((respond)=>{
-            setItems(respond.data)
-            setBorrowID(respond.data[0].borrow_id)
-            setBorrowReason(respond.data[0].borrow_reason)
-            setBorrowStatus(respond.data[0].borrow_status)
-            setBorrowLocation(respond.data[0].borrow_location)
+            if(respond.data.length){
+                setItems(respond.data)
+                setBorrowID(respond.data[0].borrow_id)
+                setBorrowReason(respond.data[0].borrow_reason)
+                setBorrowStatus(respond.data[0].borrow_status)
+                setBorrowLocation(respond.data[0].borrow_location)
+            }
         })
         .catch((error)=>{
             console.log(error.message)
@@ -68,21 +69,20 @@ function Borrow(){
         axios.post(API_URL + '/items/borrow', data)
         .then((respond)=>{
             alert(respond.data)
-            window.location.reload(false);
             navigate('/')
         })
         .catch((error)=>{
             console.log(error.message)
         })
     }
-    const cancelBorrow = () =>{
+    const returnBorrow = () =>{
         let data = {
             borrow_id : borrowID
         }
-        axios.post(API_URL + '/items/cancel', data)
+        axios.post(API_URL + '/items/returnitems', data)
         .then((respond)=>{
             alert(respond.data)
-            window.location.reload(false);
+            dispatch({type:"RETURN"})
             navigate('/')
         })
         .catch((error)=>{
@@ -101,7 +101,7 @@ function Borrow(){
                 return <ItemListRow
                     key = {item.item_id}
                     item = {item}
-                    type = {"draft"}
+                    type = {"borrowing"}
                 />
             })
         }
@@ -121,7 +121,7 @@ function Borrow(){
                 theme="light"
                 />
             <div className='itemContainerContent'>
-                <h1>Borrow Draft</h1>
+                <h1>Borrowing</h1>
                 {
                     items.length?
                     <div>
@@ -149,22 +149,16 @@ function Borrow(){
                                     Storage Name
                                 </div>
                                 <div className='itemRowHeader itemLabel'>
-                                    Stock
-                                </div>
-                                <div className='itemRowHeader itemLabel'>
-                                    Action
+                                    Count
                                 </div>
                             </div>
                             {generateDataRow()}
                         <div className='itemContainerControlAction'>
-                            <button className='itemSubmitButtonReset' onClick={cancelBorrow}>
-                                Cancel
-                            </button>
                             <button className='itemSubmitButtonUpdate' onClick={updateBorrow}>
                                 Update
                             </button>
-                            <button className='itemSubmitButton' onClick={submitBorrow}>
-                                Borrow
+                            <button className='itemSubmitButton' onClick={returnBorrow}>
+                                Return
                             </button>
                         </div>
                     </div>
@@ -180,4 +174,4 @@ function Borrow(){
         </div>
     )
 }
-export default Borrow;
+export default Borrowing;
